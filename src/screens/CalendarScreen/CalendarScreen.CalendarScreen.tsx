@@ -1,0 +1,10 @@
+agendaItem: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  borderRadius: 10,
+  padding: 15,
+  marginBottom: 20,
+  borderBottomWidth: 1,
+  borderBottomColor: '#eee',
+}, 
