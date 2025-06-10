@@ -78,7 +78,10 @@ const DashboardScreen = () => {
     console.log('Navegando para a lista de Chats');
     navigation.navigate('ChatList'); // Navega para a tela de lista de chats
   };
-  const handleMenuPress = () => console.log('Menu');
+  const handleMenuPress = () => {
+    console.log('Navegando para o Menu');
+    navigation.navigate('Menu');
+  };
   const handleSettingsPress = () => console.log('Configurações');
   const handleSearchPress = () => console.log('Buscar');
 

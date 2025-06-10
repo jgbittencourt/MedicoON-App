@@ -10,6 +10,8 @@ import NotificationScreen from './src/screens/NotificationScreen/NotificationScr
 import ChatScreen from './src/screens/ChatScreen/ChatScreen';
 import ChatListScreen from './src/screens/ChatListScreen/ChatListScreen';
 import CalendarScreen from './src/screens/CalendarScreen/CalendarScreen';
+import MenuScreen from './src/screens/MenuScreen/MenuScreen';
+import DoctorReviewScreen from './src/screens/DoctorReviewScreen/DoctorReviewScreen';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +27,8 @@ const App = () => {
         <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'Chat' }}/>
         <Stack.Screen name="ChatList" component={ChatListScreen} options={{ title: 'Mensagens' }}/>
         <Stack.Screen name="Calendar" component={CalendarScreen} options={{ title: 'Minha Agenda' }}/>
+        <Stack.Screen name="Menu" component={MenuScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="DoctorReview" component={DoctorReviewScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
