@@ -50,33 +50,35 @@ const CalendarScreen = () => {
   // Manipuladores de eventos para a barra de navegação inferior
   const handleNotificationsPress = () => {
     console.log('Navegando para Notificações');
-    navigation.navigate('Notification'); // Navega para Notificações
+    navigation.navigate('Notification', undefined);
   };
   const handleCalendarPress = () => console.log('Calendário (atual)'); // Já está no Calendário
   const handleHomePress = () => {
     console.log('Navegando para Dashboard');
-    navigation.navigate('Dashboard');
+    navigation.navigate('Dashboard', {});
   };
   const handleChatPress = () => {
     console.log('Navegando para a lista de Chats');
-    navigation.navigate('ChatList');
+    navigation.navigate('ChatList', undefined);
   };
   const handleProfilePress = () => {
     console.log('Navegando para Perfil');
-    navigation.navigate('Profile');
+    navigation.navigate('Profile', {});
   };
 
   return (
     <View style={styles.container}>
       {/* Header */}
+      <View style={styles.statusBarSpacer} />
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleMenuPress}>
-          <Icon name="menu" size={30} color="#1F1F1F" />
+        <TouchableOpacity onPress={handleMenuPress} style={styles.headerIconButton}>
+          <Icon name="menu" size={28} color="#1F1F1F" />
         </TouchableOpacity>
-        {/* Título simples no centro */}
-        <Text style={styles.headerTitle}>Minha Agenda</Text>
-        <TouchableOpacity onPress={handleSettingsPress}>
-          <Icon name="settings-outline" size={30} color="#1F1F1F" />
+        <View style={styles.headerTitleWrapper}>
+          <Text style={styles.headerTitle}>Minha Agenda</Text>
+        </View>
+        <TouchableOpacity onPress={handleSettingsPress} style={styles.headerIconButton}>
+          <Icon name="settings-outline" size={28} color="#1F1F1F" />
         </TouchableOpacity>
       </View>
 
@@ -87,24 +89,25 @@ const CalendarScreen = () => {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.agendaList}
         ListEmptyComponent={<Text>Nenhum item na agenda.</Text>}
+        showsVerticalScrollIndicator={false}
       />
 
-       {/* Bottom Navigation */}
+      {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={handleNotificationsPress}>
-          <Icon name="notifications-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleNotificationsPress} style={styles.bottomNavButton}>
+          <Icon name="notifications-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleCalendarPress}> { /* Ícone de calendário, possivelmente destacado */}
-          <Icon name="calendar" size={25} color="#007bff" />
+        <TouchableOpacity onPress={handleCalendarPress} style={styles.bottomNavButtonActive}>
+          <Icon name="calendar" size={27} style={styles.navIconActive} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleHomePress}>
-          <Icon name="home-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleHomePress} style={styles.bottomNavButton}>
+          <Icon name="home-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleChatPress}>
-          <Icon name="chatbubbles-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleChatPress} style={styles.bottomNavButton}>
+          <Icon name="chatbubbles-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleProfilePress}>
-          <Icon name="person-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleProfilePress} style={styles.bottomNavButton}>
+          <Icon name="person-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
       </View>
     </View>
@@ -114,61 +117,104 @@ const CalendarScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#62a0d2', // Cor de fundo do seu app
+    backgroundColor: '#62a0d2',
+  },
+  statusBarSpacer: {
+    height: 35,
+    backgroundColor: '#fff0',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 40,
-    paddingBottom: 20, // Espaçamento abaixo do header
-    backgroundColor: '#62a0d2', // Cor de fundo do header
+    paddingHorizontal: 24,
+    paddingBottom: 8,
+    backgroundColor: 'transparent',
+  },
+  headerTitleWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#1F1F1F',
+    color: '#222',
+    textAlign: 'center',
+  },
+  headerIconButton: {
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    padding: 10,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 1 },
   },
   agendaList: {
-    paddingHorizontal: 15,
-    paddingBottom: 80, // Espaço para a barra de navegação
-    paddingTop: 10, // Espaço acima da lista
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    paddingTop: 40,
   },
   agendaItem: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 30, // Aumentando o espaço entre os itens
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    borderRadius: 14,
+    padding: 14,
+    marginBottom: 18,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOpacity: 0.04,
+    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 1 },
   },
   itemIcon: {
     marginRight: 15,
+    color: '#007bff',
+    fontSize: 24,
   },
   itemText: {
     fontSize: 16,
     color: '#1F1F1F',
     flex: 1,
   },
-   bottomNav: {
+  bottomNav: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    paddingVertical: 8,
     backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderColor: '#ccc',
     height: 60,
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    borderTopWidth: 1,
-    borderColor: '#ccc',
+    marginBottom: 0,
+  },
+  bottomNavButton: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 2,
+  },
+  bottomNavButtonActive: {
+    flex: 1,
+    alignItems: 'center',
+    borderBottomWidth: 4,
+    borderBottomColor: '#007bff',
+    paddingVertical: 2,
   },
   navIcon: {
-    fontSize: 25,
-    color: '#000',
+    color: '#222',
+    opacity: 0.8,
+  },
+  navIconActive: {
+    color: '#007bff',
+    opacity: 1,
   },
 });
 

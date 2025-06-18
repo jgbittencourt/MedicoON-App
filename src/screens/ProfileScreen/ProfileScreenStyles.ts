@@ -175,7 +175,49 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 16,
     textAlign: 'center',
-  }
+  },
+  statusBarSpacer: {
+    height: 35,
+    backgroundColor: '#fff0',
+  },
+  headerIconButton: {
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    padding: 10,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 1 },
+  },
+  headerTitleWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#222',
+    textAlign: 'center',
+  },
+  bottomNavButton: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 2,
+  },
+  bottomNavButtonActive: {
+    flex: 1,
+    alignItems: 'center',
+    borderBottomWidth: 4,
+    borderBottomColor: '#3b6ea5',
+    paddingVertical: 2,
+  },
+  navIconActive: {
+    color: '#222',
+    opacity: 1,
+  },
 });
 
 export default styles; 

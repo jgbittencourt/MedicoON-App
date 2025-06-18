@@ -198,18 +198,16 @@ const NotificationScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      <View style={styles.statusBarSpacer} />
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleMenuPress}>
-          <Icon name="menu" size={30} color="#1F1F1F" />
+        <TouchableOpacity onPress={handleMenuPress} style={styles.headerIconButton}>
+          <Icon name="menu" size={28} color="#1F1F1F" />
         </TouchableOpacity>
-        <View style={styles.titleContainer}>
-           <Icon name="notifications" size={20} color="#1F1F1F" />
-           <Text style={styles.titleText}>Notificações</Text>
-           <Icon name="notifications" size={20} color="#1F1F1F" />
+        <View style={styles.headerTitleWrapper}>
+          <Text style={styles.headerTitle}>Notificações</Text>
         </View>
-        <TouchableOpacity onPress={handleSettingsPress}>
-          <Icon name="settings-outline" size={30} color="#1F1F1F" />
+        <TouchableOpacity onPress={handleSettingsPress} style={styles.headerIconButton}>
+          <Icon name="settings-outline" size={28} color="#1F1F1F" />
         </TouchableOpacity>
       </View>
 
@@ -233,22 +231,21 @@ const NotificationScreen = () => {
         }
       />
 
-      {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={handleNotificationsPress}>
-          <Icon name="notifications" size={25} color="#007bff" />{/* Highlighted */}
+        <TouchableOpacity onPress={handleNotificationsPress} style={styles.bottomNavButtonActive}>
+          <Icon name="notifications-outline" size={27} style={styles.navIconActive} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleCalendarPress}>
-          <Icon name="calendar-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleCalendarPress} style={styles.bottomNavButton}>
+          <Icon name="calendar-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleHomePress}>
-          <Icon name="home-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleHomePress} style={styles.bottomNavButton}>
+          <Icon name="home-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleChatPress}>
-          <Icon name="chatbubbles-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleChatPress} style={styles.bottomNavButton}>
+          <Icon name="chatbubbles-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleProfilePress}>
-          <Icon name="person-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleProfilePress} style={styles.bottomNavButton}>
+          <Icon name="person-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
       </View>
     </View>

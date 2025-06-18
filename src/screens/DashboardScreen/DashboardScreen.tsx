@@ -95,12 +95,16 @@ const DashboardScreen = () => {
   return (
     <View style={styles.container}> {/* Envolve o contêiner principal com SafeAreaView */}
       {/* Cabeçalho */}
+      <View style={styles.statusBarSpacer} />
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleMenuPress}>
-          <Icon name="menu" size={30} color="#1F1F1F" />
+        <TouchableOpacity onPress={handleMenuPress} style={styles.headerIconButton}>
+          <Icon name="menu" size={28} color="#1F1F1F" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleSettingsPress}>
-           <Icon name="settings-outline" size={30} color="#1F1F1F" />
+        <View style={styles.headerTitleWrapper}>
+          <Text style={styles.headerTitle}>Home</Text>
+        </View>
+        <TouchableOpacity onPress={handleSettingsPress} style={styles.headerIconButton}>
+          <Icon name="settings-outline" size={28} color="#1F1F1F" />
         </TouchableOpacity>
       </View>
 
@@ -111,7 +115,9 @@ const DashboardScreen = () => {
           placeholder="Busque por médicos,clínicas ou especialidades"
           placeholderTextColor="#888"
         />
-        <Icon name="search" size={20} style={styles.searchIcon} />
+        <TouchableOpacity onPress={handleSearchPress} style={styles.searchIconContainer}>
+          <Icon name="search" size={22} color="#1F1F1F" />
+        </TouchableOpacity>
       </View>
 
       {/* Imagem central */}
@@ -124,23 +130,23 @@ const DashboardScreen = () => {
 
       {/* Barra de navegação inferior */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={handleNotificationsPress} style={styles.navButton}>
+        <TouchableOpacity onPress={handleNotificationsPress} style={styles.bottomNavButton}>
           <View style={{ alignItems: 'center' }}>
-            <Icon name="notifications-outline" size={25} style={styles.navIcon} />
+            <Icon name="notifications-outline" size={27} style={styles.navIcon} />
             {hasNewNotifications && <View style={styles.notificationBadge} />}
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleCalendarPress}>
-          <Icon name="calendar-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleCalendarPress} style={styles.bottomNavButton}>
+          <Icon name="calendar-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleHomePress}>
-          <Icon name="home-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleHomePress} style={styles.bottomNavButtonActive}>
+          <Icon name="home-outline" size={27} style={styles.navIconActive} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleChatPress}>
-          <Icon name="chatbubbles-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleChatPress} style={styles.bottomNavButton}>
+          <Icon name="chatbubbles-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleProfilePress}>
-          <Icon name="person-outline" size={25} style={styles.navIcon} />
+        <TouchableOpacity onPress={handleProfilePress} style={styles.bottomNavButton}>
+          <Icon name="person-outline" size={27} style={styles.navIcon} />
         </TouchableOpacity>
       </View>
     </View>
